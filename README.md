@@ -6,4 +6,8 @@ To install the app into your cluster, run this in the desired namespace:
 
 ``kubectl apply -f https://github.com/scubakiz/clusterinfo/clusterinfo.yaml``
 
+Access the app from your local machine:
+
+``kubectl port-forward svc/clusterinfo 5252``
+
 Source code coming soon.
