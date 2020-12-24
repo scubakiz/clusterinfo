@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: clusterinfo
+  labels:
+    app: clusterinfo
+spec:
+  containers:
+  - name: clusterinfo
+    image: scubakiz/clusterinfo:0.5
+    env:
+      - name: SHOW_POD_CONTAINERS
+        value: "true"
+      - name: ASPNETCORE_ENVIRONMENT  
+        value: "Development"
+    ports:
+      - containerPort: 80
+---      
+apiVersion: v1
+kind: Service
+metadata:
+  name: clusterinfo
+spec:
+  selector:
+    app: clusterinfo
+  ports:
+  - port: 5252
+    targetPort: 80
