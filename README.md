@@ -1,4 +1,4 @@
-# clusterinfo
+# Cluster Info
 In-cluster Kubernetes UI - Meant for teaching Kubernetes concepts
 
 # Available as Docker image
