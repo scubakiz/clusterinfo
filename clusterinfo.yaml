@@ -57,8 +57,6 @@ spec:
     env:
       - name: SHOW_POD_CONTAINERS
         value: "true"
-      - name: Logging__LogLevel__Default
-        value: Warning
     ports:
       - containerPort: 80
     imagePullPolicy: Always  
