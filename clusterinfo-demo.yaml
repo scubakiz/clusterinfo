@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: clusterinfo-sa  
+  name: clusterinfo-sa
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -12,7 +12,7 @@ rules:
   resources:  ["containers", "logs", "pods", "endpoints", "services", "events", "limitranges", "nodes", "namespaces"]
   verbs: ["get", "list", "watch"]
 - apiGroups: [""]
-  resources:  ["secrets", "configmaps", "persistentvolumeclaims", "persistentvolumes", "volumes"]
+  resources:  ["secrets", "configmaps", "persistentvolumeclaims", "persistentvolume", "volumes"]
   verbs: ["get", "list", "watch"]
 - apiGroups: [""]
   resources:  ["pods/exec", "pods/log"]
@@ -33,7 +33,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: clusterinfo-crb-demo
+  name: clusterinfo-crb
 subjects:
 - kind: ServiceAccount
   name: clusterinfo-sa
@@ -43,23 +43,31 @@ roleRef:
   name: clusterinfo-cr
   apiGroup: rbac.authorization.k8s.io  
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: clusterinfo
-  labels:
-    app: clusterinfo
 spec:
-  serviceAccountName: clusterinfo-sa
-  containers:
-  - name: clusterinfo
-    image: scubakiz/clusterinfo:0.5
-    env:
-      - name: SHOW_POD_CONTAINERS
-        value: "true"
-    ports:
-      - containerPort: 80
-    imagePullPolicy: Always  
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clusterinfo
+  template:
+    metadata:
+      name: clusterinfo
+      labels:
+        app: clusterinfo
+    spec:
+      serviceAccountName: clusterinfo-sa
+      containers:
+      - name: clusterinfo
+        image: scubakiz/clusterinfo:0.5
+        env:
+          - name: SHOW_POD_CONTAINERS
+            value: "true"
+        ports:
+          - containerPort: 80
+        imagePullPolicy: Always  
 ---      
 apiVersion: v1
 kind: Service
