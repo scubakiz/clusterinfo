@@ -12,7 +12,7 @@ rules:
   resources:  ["containers", "logs", "pods", "endpoints", "services", "events", "limitranges", "nodes", "namespaces"]
   verbs: ["get", "list", "watch"]
 - apiGroups: [""]
-  resources:  ["secrets", "configmaps", "persistentvolumeclaims", "persistentvolume", "volumes"]
+  resources:  ["secrets", "configmaps", "persistentvolumeclaims", "persistentvolumes", "volumes"]
   verbs: ["get", "list", "watch"]
 - apiGroups: [""]
   resources:  ["pods/exec", "pods/log"]
