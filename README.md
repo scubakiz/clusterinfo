@@ -1,7 +1,7 @@
 # Cluster Info
 In-cluster Kubernetes UI - Meant for teaching Kubernetes concepts
 
-# Available as Docker image
+# Available as Kubernetes Deployment:
 To install the app into your cluster, run this in the __default__ namespace:
 
 ``kubectl apply -f https://raw.githubusercontent.com/scubakiz/clusterinfo/main/clusterinfo.yaml``
