@@ -67,7 +67,9 @@ spec:
             value: "true"
         ports:
           - containerPort: 80
-        imagePullPolicy: Always  
+        imagePullPolicy: Always
+      nodeSelector:
+        kubernetes.io/os: linux          
 ---      
 apiVersion: v1
 kind: Service
