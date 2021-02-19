@@ -11,7 +11,4 @@ To install it in any other namespace, download the yaml and change the namespace
 
 Access the app from your local machine:
 
-``kubectl port-forward -n clusterinfo svc/clusterinfo 5252:5252``
-
-
-Source code coming soon.
+``kubectl port-forward svc/clusterinfo 5252:5252``
