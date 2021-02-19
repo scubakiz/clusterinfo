@@ -1,6 +1,5 @@
 # Cluster Info
-In-cluster Kubernetes UI - Meant for teaching Kubernetes concepts
-
+In-cluster Kubernetes UI - Designed for teaching Kubernetes concepts
 
 
 # Available as Kubernetes Deployment:
@@ -12,7 +11,7 @@ To install it in any other namespace, download the yaml and change the namespace
 
 Access the app from your local machine:
 
-``kubectl port-forward svc/clusterinfo 5252``
+``kubectl port-forward -n clusterinfo svc/clusterinfo 5252:5252``
 
 
 Source code coming soon.
