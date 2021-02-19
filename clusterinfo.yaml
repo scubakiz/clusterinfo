@@ -26,6 +26,12 @@ rules:
 - apiGroups: ["storage.k8s.io"]  
   resources:  ["storageclasses"]
   verbs: ["get", "list", "watch"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["batch"]
+  resources: ["jobs", "cronjobs"]
+  verbs: ["get", "list", "watch"]      
 - apiGroups: ["metrics.k8s.io"]  
   resources:  ["nodes", "pods"]
   verbs: ["get", "list", "watch"]
@@ -61,7 +67,7 @@ spec:
       serviceAccountName: clusterinfo-sa
       containers:
       - name: clusterinfo
-        image: scubakiz/clusterinfo:0.5
+        image: scubakiz/clusterinfo:latest
         env:
           - name: SHOW_POD_CONTAINERS
             value: "true"
