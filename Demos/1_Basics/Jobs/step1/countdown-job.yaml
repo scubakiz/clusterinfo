@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: countdown-job
+spec:
+  # Settings Apply to the whole job
+  completions: 10 # create a total of 10 pods
+  parallelism: 4 # run multiple pods simultanously 
+  backoffLimit: 3 # hard stop after 3 failure
+  activeDeadlineSeconds: 100 # total time the whole job has to complete
+  template:
+    metadata:
+      name: countdown-job
+      labels:
+        app: countdown-job
+        color: aqua
+    spec:
+      containers:
+      - name: counter
+        image: centos:7        
+        command:
+         - "bin/bash"
+         - "-c"
+         - "for i in 9 8 7 6 5 4 3 2 1 ; do echo $i; sleep 2 ; done"
+      restartPolicy: OnFailure
+      nodeSelector:
+        kubernetes.io/os: linux   

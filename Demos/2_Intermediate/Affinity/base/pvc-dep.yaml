@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pvc-pod-dep
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+       target: pvc-pod       
+  template:
+    metadata:
+      name: pvc-pod
+      labels:
+        target: pvc-pod
+        color: white
+    spec:
+      nodeSelector:            
+        kubernetes.io/os: linux  
+      containers:
+      - name: nginx
+        image: k8slab/nginx:1.0
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: 
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi   
+        volumeMounts:
+        - mountPath: "/usr/pvc"
+          name: mypvc
+      volumes:
+      - name: mypvc
+        persistentVolumeClaim:
+          claimName: pvc-azure-disk   
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: target
+                operator:  In
+                values:
+                  - pvc-pod
+            topologyKey: "kubernetes.io/hostname"
+
+          

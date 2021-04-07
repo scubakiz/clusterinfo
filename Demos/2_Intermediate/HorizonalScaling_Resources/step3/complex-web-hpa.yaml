@@ -1,0 +1,42 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: complex-web-hpa-1
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: complex-web-dep
+  minReplicas: 2
+  maxReplicas: 12
+  metrics:
+  # Averages take the average of the given 
+  # metric across ALL Pods matching the target
+  - type: Resource
+    resource:
+      name: cpu
+      # Use utilization percentage of requests
+      # target:
+      #   type: Utilization
+      #   averageUtilization: 50 
+      # for example: 
+      #   requests:
+      #     cpu: 300m
+      # HPA would trigger at 150m
+
+      # Use average value of ALL pods ragardless of requests 
+      target:
+        type: AverageValue
+        averageValue: 100m
+  behavior:
+    scaleDown:
+      # The stabilization window is used to restrict the flapping of 
+      # replicas when the metrics used for scaling keep fluctuating
+      stabilizationWindowSeconds: 30
+      policies:
+      # Allows a 50% of the currently running replicas to be removed 
+      # which means the scaling target can be scaled down to the minimum 
+      # allowed replicas (from 10 to 2)
+      - type: Percent
+        value: 50
+        periodSeconds: 30

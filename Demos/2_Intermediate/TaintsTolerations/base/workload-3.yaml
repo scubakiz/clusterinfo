@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload-3
+spec:
+  replicas: 12
+  selector:
+    matchLabels:
+      app: nginx-3
+  template:
+    metadata:
+      labels:
+        color: blue
+        app: nginx-3        
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.18
+        ports:
+        - containerPort: 80          
+      nodeSelector:
+        kubernetes.io/os: linux 

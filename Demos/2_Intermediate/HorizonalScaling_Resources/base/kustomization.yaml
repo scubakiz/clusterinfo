@@ -1,0 +1,3 @@
+resources:
+- complex-web-dep.yaml
+- complex-web-svc.yaml

@@ -1,0 +1,22 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: complex-web-hpa-1
+spec:
+  metrics:
+  # Averages take the average of the given 
+  # metric across ALL Pods matching the target
+  - type: Resource
+    resource:
+      name: cpu
+      # Use average value of ALL pods ragardless of requests 
+      target:
+        type: AverageValue
+        averageValue: 100m
+  - type: Resource
+    resource:
+      name: memory
+      # Use utilization percentage of requests
+      target:
+        type: Utilization
+        averageUtilization: 50   

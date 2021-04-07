@@ -1,0 +1,3 @@
+resources:
+- workload.yaml
+- keda-cron.yaml

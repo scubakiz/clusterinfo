@@ -1,0 +1,4 @@
+resources:
+- workload-1.yaml
+- workload-2.yaml
+- workload-3.yaml

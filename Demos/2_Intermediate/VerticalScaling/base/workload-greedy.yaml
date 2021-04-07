@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload-greedy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: greedy
+  template:
+    metadata:
+      labels:
+        app: greedy
+        color: magenta
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.18
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: 
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+      nodeSelector:
+        kubernetes.io/os: linux                  
+
