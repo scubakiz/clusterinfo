@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clusterinfo
+  namespace: clusterinfo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clusterinfo
+  template:
+    metadata:
+      name: clusterinfo
+      labels:
+        app: clusterinfo
+    spec:
+      serviceAccountName: clusterinfo-sa
+      containers:
+        - name: clusterinfo
+          image: scubakiz/clusterinfo:{{ .Values.image.tag }}
+          env:
+            - name: SHOW_POD_CONTAINERS
+              value: "true"
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always

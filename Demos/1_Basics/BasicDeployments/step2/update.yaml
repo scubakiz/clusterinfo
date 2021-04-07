@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload-dep
+spec:
+  minReadySeconds: 15
+  template:
+    metadata:
+      labels:
+        app: nginx-1
+        color: aqua

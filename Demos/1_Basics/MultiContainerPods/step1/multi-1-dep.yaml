@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multi-1-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: multi-1
+  template:
+    metadata:
+      labels:
+        app: multi-1
+        color: lime
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+          - containerPort: 8080
+            protocol: TCP
+      - image: mysql:5.7
+        name: mysql
+        # env:
+        # - name: MYSQL_ALLOW_EMPTY_PASSWORD
+        #   value: "true"
+        ports:
+          - containerPort: 3306
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 200m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+      - name: counter
+        image: centos:7
+        command:
+          - "bin/bash"
+          - "-c"
+          - "for i in {1..999} ; do echo $i ; sleep 100; done"

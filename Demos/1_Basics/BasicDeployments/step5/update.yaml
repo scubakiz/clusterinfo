@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload-dep
+spec:
+  strategy:
+    type: RollingUpdate
+  revisionHistoryLimit: 2  
+  template:
+    metadata:
+      labels:
+        app: nginx-1
+        color: purple

@@ -1,0 +1,3 @@
+resources:
+- workload-dep.yaml
+- workload-svc.yaml
