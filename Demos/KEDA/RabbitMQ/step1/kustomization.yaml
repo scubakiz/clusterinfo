@@ -1,0 +1,2 @@
+resources:
+  - queue-loader-job.yaml

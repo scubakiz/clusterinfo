@@ -1,0 +1,34 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cron-scaledobject
+  namespace: default
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: workload
+  pollingInterval: 10
+  cooldownPeriod:  1
+  # minReplicaCount: 1                                 # Optional. Default: 0
+  # maxReplicaCount: 30 
+  triggers:
+  - type: cron
+    metadata:
+      timezone: Etc/UTC
+      start: 1/2 * * * *
+      end: 1/4 * * * *
+      desiredReplicas: "12"
+  advanced:                                          # Optional. Section to specify advanced options
+    restoreToOriginalReplicaCount: false        # Optional. Default: false
+    horizontalPodAutoscalerConfig:                   # Optional. Section to specify HPA related options
+      behavior:                                      # Optional. Use to modify HPA's scaling behavior
+        scaleUp:
+          stabilizationWindowSeconds: 1
+          policies:
+          - type: Percent
+            value: 100
+            periodSeconds: 1
+          - type: Pods
+            value: 10
+            periodSeconds: 1
+          selectPolicy: Max            

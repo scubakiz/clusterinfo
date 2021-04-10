@@ -1,5 +1,5 @@
 # Change to the demo folder
-cd C:\ClusterInfo\Demos\1_Basics\MultiContainerPods
+cd ..\..\1_Basics\MultiContainerPods
 
 # Create multi container workload
 kubectl apply -k .\step1

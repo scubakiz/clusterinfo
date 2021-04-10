@@ -1,5 +1,5 @@
 # Change to the demo folder
-cd C:\ClusterInfo\Demos\1_Basics\Services
+cd ..\..\1_Basics\Services
 
 # Create initial workload
 kubectl apply -k .\base

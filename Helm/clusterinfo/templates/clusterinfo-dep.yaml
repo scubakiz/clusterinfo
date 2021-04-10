@@ -24,3 +24,10 @@ spec:
           ports:
             - containerPort: 80
           imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /Settings
+              port: 80
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 15

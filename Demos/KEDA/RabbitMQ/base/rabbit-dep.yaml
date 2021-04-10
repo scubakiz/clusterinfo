@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbit-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbit-pod
+  template:
+    metadata:
+      labels:
+        app: rabbit-pod
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux     
+      containers:
+        - name: rabbit-container
+          image: rabbitmq:3-management
+          ports:
+            - name: rabbit-ui
+              containerPort: 15672
+            - name: rabbit-port
+              containerPort: 5672
+          envFrom:
+            - configMapRef:
+                name: rabbit-configmap
+          volumeMounts:
+            - name: rabbit-data
+              mountPath: /var/lib/rabbitmq
+            - name: rabbit-logs
+              mountPath: /var/log/rabbitmq
+          resources:
+            requests:
+              cpu: 300m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: rabbit-data
+          emptyDir: {}
+        - name: rabbit-logs
+          emptyDir: {}

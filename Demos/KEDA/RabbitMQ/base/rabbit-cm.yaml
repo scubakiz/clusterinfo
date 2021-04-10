@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbit-configmap
+  labels:
+    app: rabbit-configmap
+data:
+  RABBITMQ_DEFAULT_USER: guest
+  RABBITMQ_DEFAULT_PASS: guest
+  RABBITMQ_USERNAME: guest
+  RABBITMQ_PASSWORD: guest
+  ASPNETCORE_ENVIRONMENT: Production
+  RABBITMQ_HOSTNAME: rabbit-svc
+  KEDA_RABBITMQ_HOST: amqp://guest:guest@rabbit-svc.default.svc.cluster.local:5672
+  QUEUE_PROVIDER: RabbitMQ
+  SERVICE_MESSAGE_TYPE: Sample  

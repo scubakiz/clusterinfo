@@ -1,0 +1,23 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: azm-scaler
+spec:
+  scaleTargetRef:
+    name: azm-workload-dep
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+  - type: azure-monitor
+    metadata:
+      resourceURI: Microsoft.Insights/Components/kiz-workshops-law
+      tenantId: 72f988bf-86f1-41af-91ab-2d7cd011db47
+      subscriptionId: ad7f75c0-eef5-46f2-aee1-447cb2fb313c
+      resourceGroupName: kiz-workshops
+      metricName: requests/count
+      metricFilter: namespace eq 'default'
+      metricAggregationInterval: "0:5:0"
+      metricAggregationType: Count
+      targetValue: "1"
+    authenticationRef:
+      name: azm-trigger-auth
