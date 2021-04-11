@@ -32,9 +32,12 @@ rules:
         "volumes",
       ]
     verbs: ["get", "list", "watch"]
+  - apiGroups: ["apiextensions.k8s.io"]
+    resources: ["customresourcedefinitions"]
+    verbs: ["get", "list", "watch"]
   - apiGroups: [""]
     resources: ["pods/exec", "pods/log"]
-    verbs: ["get", "list", "watch"]
+    verbs: ["get", "list", "watch", "create"]
   - apiGroups: ["networking.k8s.io"]
     resources: ["ingress"]
     verbs: ["get", "list", "watch"]
