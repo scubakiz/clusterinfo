@@ -4,11 +4,13 @@ metadata:
   name: clusterinfo-cr
 rules:
   - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: [""]
     resources:
       [
         "containers",
         "logs",
-        "pods",
         "endpoints",
         "services",
         "events",
@@ -16,6 +18,9 @@ rules:
         "nodes",
         "namespaces",
       ]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "replicasets", "daemonsets", "statefulsets"]
     verbs: ["get", "list", "watch"]
   - apiGroups: [""]
     resources:
@@ -29,9 +34,6 @@ rules:
     verbs: ["get", "list", "watch"]
   - apiGroups: [""]
     resources: ["pods/exec", "pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: ["apps"]
-    resources: ["replicasets", "deployments"]
     verbs: ["get", "list", "watch"]
   - apiGroups: ["networking.k8s.io"]
     resources: ["ingress"]
