@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  clusterinfo:
+  - apiVersion: v1
+    appVersion: "0.8"
+    created: "2021-04-11T13:03:46.4945963-06:00"
+    description: A Helm chart for Cluster Info
+    digest: da4759687dc6b24bcc77671f5dac9321f81b38e6a70765fd46b5eb2c250af40e
+    name: clusterinfo
+    urls:
+    - https://clusterinfosa.blob.core.windows.net/helm/clusterinfo-1.tgz
+    version: "1"
+generated: "2021-04-11T13:03:46.4205299-06:00"

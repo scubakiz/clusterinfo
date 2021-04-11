@@ -7,7 +7,7 @@ In-cluster Kubernetes UI designed for teaching Kubernetes concepts.
 Add the Helm repo:
 
 ```
-helm repo add scubakiz https://clusterinfosa.blob.core.windows.net/helm/
+helm repo add scubakiz https://clusterinfosa.blob.core.windows.net/helm
 ```
 
 Install the Helm chart:
