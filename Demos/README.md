@@ -2,7 +2,7 @@
 
 
 
-## Setup
+# Setup
 
 ### Please install the following components prior to running any of the demos:
 
@@ -28,7 +28,7 @@ helm install keda kedacore/keda --namespace keda
 
 
 
-## Using Demos
+# Using Demos
 
 There are several demos you can use to illustrate various Kubernetes concepts.   There are demos available as ***Powershell*** scripts.
 
@@ -63,11 +63,11 @@ The other way to run the demos is load the scripts into **VS Code**, select each
 
 
 
-### Available Demos
+# Available Demos
 
 These demos are independent of each other and can be run in any order.
 
-#### Basics
+### Basics
 
   * **Basic Deployments** - Shows a simple deployment with updates that cause new Replica Sets to be created.
   * **Services** - Shows the evolution of a Service from ClusterIP to NodePort to LoadBalancer
@@ -77,7 +77,7 @@ These demos are independent of each other and can be run in any order.
 
 
 
-#### Intermediate
+### Intermediate
 
   * **Affinity Volume** - Shows Pod Affinity being used to ensure all replicas containing a ***ReadWriteOnce*** volume are scheduled on the same node.
   * **Anti-Affinity Stateful Set**- Shows Pod Anti-Affinity being used to ensure instances of Pods in a ***Stateful Set*** are scheduled on different nodes.
@@ -87,13 +87,13 @@ These demos are independent of each other and can be run in any order.
 
 
 
-#### Advanced
+### Advanced
 
 Coming soon...
 
 
 
-#### KEDA
+### KEDA
 
   * **RabbitMQ** - Shows a KEDA created HPA control the number of replicas based on the number of messages in a RabbitMQ queue.
   * **Cron** - Show a KEDA created HPA automatically scale a deployment up and down based on a pre-defined schedule.

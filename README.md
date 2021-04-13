@@ -1,4 +1,4 @@
-## Kubernetes Cluster Info
+# Kubernetes Cluster Info
 In-cluster Kubernetes UI designed for teaching Kubernetes concepts.
 
 ![](ClusterInfo.png)
@@ -9,7 +9,7 @@ In-cluster Kubernetes UI designed for teaching Kubernetes concepts.
 
 
 
-## Installation:
+# Installation:
 
 Add the Helm repo:
 
@@ -31,7 +31,7 @@ Forward the service and the app from your local machine at http://localhost:5252
 kubectl port-forward svc/clusterinfo 5252:5252 -n clusterinfo
 ```
 
-## Clean up
+# Clean up
 To remove Cluster Info from your cluster, uninstall the Helm chart:
 ```bash
 helm uninstall clusterinfo
