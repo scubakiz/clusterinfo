@@ -1,9 +1,9 @@
 # Change to the demo folder
-cd ..\..\KEDA\AzureMonitor
+cd ../../KEDA/AzureMonitor
 
 # Create initial workload
-kubectl apply -k .\base
+kubectl apply -k ./base
 
 
 # Clean up
-kubectl delete -k .\base
+kubectl delete -k ./base

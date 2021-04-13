@@ -1,17 +1,17 @@
 # Change to the demo folder
-cd ..\..\KEDA\AzureLogAnalytics
+cd ../../KEDA/AzureLogAnalytics
 
 # Create initial workload
-kubectl apply -k .\base
+kubectl apply -k ./base
 
 # Create load on system
-kubectl apply -k .\step1
+kubectl apply -k ./step1
 
 # Increase load on system
-kubectl apply -k .\step2
+kubectl apply -k ./step2
 
 # Remove load
-kubectl delete -k .\step1
+kubectl delete -k ./step1
 
 # Clean up
-kubectl delete -k .\base
+kubectl delete -k ./base
