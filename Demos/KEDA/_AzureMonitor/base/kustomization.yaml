@@ -1,5 +1,0 @@
-resources:
-- azm-secret.yaml
-- azm-trigger-auth.yaml
-- azm-workload-dep.yaml
-- azm-scaler.yaml
