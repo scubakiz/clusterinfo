@@ -8,9 +8,7 @@ read-host "Navigate to the Nodes page."
 read-host "Next Step - Creates initial workloads"
 kubectl apply -k ./base
 
-read-host "Enter the Node Name of one node:" selectedNode
-# For Powershell, set to one of the nodes in your cluster: 
-# $selectedNode = "aks-agentpool-35127589-vmss000004"
+$selectedNode = read-host "Enter the Node Name of one node" 
 
 read-host "Next Step - Adds color and Process label to Node"
 kubectl label node $selectedNode color=lime
@@ -37,7 +35,7 @@ read-host "Observe how only the Lime pods are scheduled on selected node and all
 
 read-host "Next Step - Cleans up"
 kubectl delete -k ./base
-kubectl label node $Node color-
-kubectl label node $Node allowedprocess-
-kubectl taint node $Node onlyprocess-
+kubectl label node $selectedNode color-
+kubectl label node $selectedNode allowedprocess-
+kubectl taint node $selectedNode onlyprocess-
 cd ../../

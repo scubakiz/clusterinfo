@@ -41,3 +41,11 @@ Remove the Helm repo:
 ```bash
 helm repo remove scubakiz
 ```
+
+
+
+
+#### Technologies Used
+
+This application is written in C# using .Net Core 3.1 with Blazor.
+
