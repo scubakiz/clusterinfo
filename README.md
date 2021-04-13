@@ -3,18 +3,19 @@ In-cluster Kubernetes UI designed for teaching Kubernetes concepts.
 
 ![](ClusterInfo.png)
 
+<span style="font-size: 28pt; color:red; font-weight: bold">NEVER USE CLUSTER INFO IN A PRODUCTION CLUSTER!!</span>
 
 # Installation:
 
 Add the Helm repo:
 
-```
+```shell
 helm repo add scubakiz https://clusterinfosa.blob.core.windows.net/helm
 ```
 
 Install the Helm chart:
 
-```
+```shell
 helm install clusterinfo scubakiz/clusterinfo
 ```
 
@@ -28,11 +29,11 @@ kubectl port-forward svc/clusterinfo 5252:5252 -n clusterinfo
 
 # Clean up
 To remove Cluster Info from your cluster, uninstall the Helm chart:
-```
+```bash
 helm uninstall clusterinfo
 ```
 
 Remove the Helm repo:
-```
+```bash
 helm repo remove scubakiz
 ```

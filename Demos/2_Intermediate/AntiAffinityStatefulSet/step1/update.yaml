@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pvc-pod-ss
+spec:
+  replicas: 4
