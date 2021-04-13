@@ -1,6 +1,8 @@
 # Cluster Info
 In-cluster Kubernetes UI designed for teaching Kubernetes concepts.
 
+![](ClusterInfo.png)
+
 
 # Installation:
 

@@ -1,17 +1,17 @@
 # Change to the demo folder
-cd ..\..\1_Basics\BasicDeployments
+cd ../../1_Basics/BasicDeployments
 
 # Navigate to the Deployments page
 
 # Create initial deployment
-kubectl apply -k .\base
+kubectl apply -k ./base
 
 # Change color label to trigger a new replica set
-kubectl apply -k .\step1
+kubectl apply -k ./step1
 
 # Open the Deployment Info Panel
 # Change color label and set MinReadySecond to slow down the next replica set
-kubectl apply -k .\step2
+kubectl apply -k ./step2
 
 # Undo rollout to bring previous replica set back 
 kubectl rollout undo deploy workload-1-dep
