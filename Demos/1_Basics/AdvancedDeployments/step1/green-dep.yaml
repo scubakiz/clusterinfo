@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-dep
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+       target: green-dep
+  template:
+    metadata:
+      name: green-dep
+      labels:
+        target: green-dep
+        app: status
+        color: green
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+      - name: nginxcolordemo
+        image: scubakiz/nginxcolordemo:green
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        imagePullPolicy: Always
+        env: 
+        - name: NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: POD_SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.serviceAccountName 
+        - name: POD_CPU_REQUEST
+          valueFrom:
+            resourceFieldRef:
+              containerName: nginxcolordemo
+              resource: requests.cpu
+        - name: POD_CPU_LIMIT
+          valueFrom:
+            resourceFieldRef:
+              containerName: nginxcolordemo
+              resource: limits.cpu
+        - name: POD_MEM_REQUEST
+          valueFrom:
+            resourceFieldRef:
+              containerName: nginxcolordemo
+              resource: requests.memory
+        - name: POD_MEM_LIMIT
+          valueFrom:
+            resourceFieldRef:
+              containerName: nginxcolordemo
+              resource: limits.memory 
+        volumeMounts:
+          - name: podinfo
+            mountPath: /etc/podinfo    
+      volumes:
+      - name: podinfo
+        downwardAPI:
+          items:
+          - path: "labels"
+            fieldRef:
+              fieldPath: metadata.labels
+          - path: "annotations"
+            fieldRef:
+              fieldPath: metadata.annotations
+

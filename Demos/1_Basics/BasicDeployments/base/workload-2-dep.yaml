@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: workload-2-dep
 spec:
-  replicas: 3
+  replicas: 12
   selector:
     matchLabels:
       app: nginx-2
@@ -17,6 +17,6 @@ spec:
       - name: nginx
         image: nginx:1.18
         ports:
-        - containerPort: 80          
+        - containerPort: 80               
       nodeSelector:
         kubernetes.io/os: linux       

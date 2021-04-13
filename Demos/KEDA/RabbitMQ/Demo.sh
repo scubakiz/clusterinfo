@@ -1,14 +1,14 @@
 # Change to the demo folder
 cd ..\..\KEDA\RabbitMQ
 
-# Set Micro Pods on.  Switch to Deployments page
+# Set Mini Pods on.  Switch to Deployments page
 
 # Create initial workloads
 kubectl apply -k .\base
 
 # Wait until workload turns green
 
-# Load rabbit UI
+# Load rabbit UI - in a separate window
 kubectl port-forward svc/rabbit-svc 15672
 
 # Observer queue
