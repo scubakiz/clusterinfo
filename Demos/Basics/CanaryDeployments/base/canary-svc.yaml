@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: canary-svc
+spec:
+  ports:
+    - name: web
+      port: 8080
+      targetPort: 80
+  selector:
+    target: canary-pod
+  type: LoadBalancer

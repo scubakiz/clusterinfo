@@ -72,7 +72,8 @@ These demos are independent of each other and can be run in any order.
   * **Basic Deployments** - Shows a simple deployment with updates that cause new Replica Sets to be created.
   * **Services** - Shows the evolution of a Service from ClusterIP to NodePort to LoadBalancer
   * **Multi-container Pods** - Shows multi-container pods, including Init Containers.
-  * **Advanced Deployments** - Shows Blue/Green and Canary deployments with Services.
+  * **Blue / Green Deployments** - Shows Blue/Green deployments with a Service switching between them.
+  * **Canary Deployments** - Shows Canary deployments with a Service load balancing between them.
   * **Jobs** - Shows Jobs and Cron Jobs.
 
 

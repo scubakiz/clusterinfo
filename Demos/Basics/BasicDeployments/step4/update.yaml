@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload-1-dep
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: workload-1
+        color: purple
