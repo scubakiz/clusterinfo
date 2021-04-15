@@ -1,5 +1,5 @@
 # Change to the demo folder
-cd Services
+Set-Location Services
 
 read-host "Navigate to the Services page"
 
@@ -18,4 +18,4 @@ read-host "Watch the website as it refreshes, showing how it reaches a different
 
 read-host "Next Step - Cleans up"
 kubectl delete -k ./base
-cd ..
+Set-Location ..

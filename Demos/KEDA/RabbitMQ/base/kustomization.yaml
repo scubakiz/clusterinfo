@@ -1,5 +1,0 @@
-resources:
-- rabbit-cm.yaml
-- rabbit-dep.yaml
-- rabbit-svc.yaml
-- queue-processer.yaml

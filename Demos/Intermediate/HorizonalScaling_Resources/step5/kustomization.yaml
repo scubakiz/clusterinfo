@@ -1,4 +1,0 @@
-bases:
--  ../step3
-patchesStrategicMerge:
-- update.yaml

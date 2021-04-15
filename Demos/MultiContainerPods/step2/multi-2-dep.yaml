@@ -19,14 +19,14 @@ spec:
         command:
         - "bin/bash"
         - "-c"
-        - "for i in {1..15} ; do echo $i ; sleep 1; done"
+        - "for i in {1..15} ; do echo $i ; sleep 1s; done"
       - name: homepage
         image: busybox
         args: 
         - "/bin/sh"
         - "-c"
         # Get a web page, saves it as index.html in the temp folder
-        - "wget -O /work-dir/index.html http://neverssl.com/online; sleep 10;"
+        - "wget -O /work-dir/index.html http://neverssl.com/online; sleep 10s;"
         volumeMounts: 
         - name: tempvol 
           mountPath: /work-dir # internal mount path        

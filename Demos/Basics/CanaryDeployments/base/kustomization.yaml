@@ -1,4 +1,0 @@
-resources:
-- canary-1-dep.yaml
-- canary-2-dep.yaml
-- canary-svc.yaml

@@ -1,6 +1,0 @@
-resources:
-- azla-complex-web-dep.yaml
-- azla-complex-web-svc.yaml
-- azla-secret.yaml
-- azla-workload-dep.yaml
-- azla-scaler.yaml

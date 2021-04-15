@@ -1,5 +1,5 @@
 # Change to the demo folder
-cd MultiContainerPods
+Set-Location MultiContainerPods
 
 read-host "Navigate to the Deployments Page"
 
@@ -14,4 +14,4 @@ read-host "Click on any of the new pods to view Pod Details.  Watch the containe
 read-host "Next Step - Cleans up"
 kubectl delete -k ./step1
 kubectl delete -k ./step2
-cd ..
+Set-Location ..

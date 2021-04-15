@@ -1,6 +1,0 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: workload-greedy
-spec:
-  replicas: 50
