@@ -14,6 +14,8 @@ spec:
       labels:
         app: clusterinfo
     spec:
+      nodeSelector:
+        kubernetes.io/os: linux
       serviceAccountName: clusterinfo-sa
       containers:
         - name: clusterinfo
@@ -21,13 +23,32 @@ spec:
           env:
             - name: SHOW_POD_CONTAINERS
               value: "true"
+            - name: Logging__LogLevel__Default
+              value: "{{ .Values.logging }}"
           ports:
             - containerPort: 80
           imagePullPolicy: Always
+          # volumeMounts:
+          # - mountPath: /tmp/term-log
+          #   name: temp-volume
+          terminationMessagePath: /data/termlog
+          terminationMessagePolicy: FallbackToLogsOnError
           livenessProbe:
             httpGet:
               path: /Settings
               port: 80
             initialDelaySeconds: 60
-            periodSeconds: 30
-            timeoutSeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 10
+      tolerations:
+      - operator: "Exists"
+        effect: "NoSchedule"
+      - operator: "Exists"
+        effect: "NoExecute"        
+      volumes:
+      - name: temp-volume
+        hostPath:
+         # directory location on host
+          path: /data/termlog
+          # # this field is optional
+          # type: FileOrCreate

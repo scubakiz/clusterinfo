@@ -17,6 +17,8 @@ rules:
         "limitranges",
         "nodes",
         "namespaces",
+        "resourcequotas",
+        "limitranges"
       ]
     verbs: ["get", "list", "watch"]
   - apiGroups: ["apps"]
@@ -53,6 +55,9 @@ rules:
   - apiGroups: ["metrics.k8s.io"]
     resources: ["nodes", "pods"]
     verbs: ["get", "list", "watch"]
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["roles", "rolebindings","clusterroles", "clusterrolebindings"]
+    verbs: ["get", "list", "watch"]    
   - apiGroups: ["keda.sh"]
     resources: ["scaledobjects", "scaledjobs"]
     verbs: ["get", "list", "watch"]
