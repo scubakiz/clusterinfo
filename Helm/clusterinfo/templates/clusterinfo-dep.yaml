@@ -41,14 +41,16 @@ spec:
             periodSeconds: 20
             timeoutSeconds: 10
       tolerations:
-      - operator: "Exists"
-        effect: "NoSchedule"
-      - operator: "Exists"
-        effect: "NoExecute"        
+        - operator: "Exists"
+          effect: "NoSchedule"
+        - operator: "Exists"
+          effect: "NoExecute"
+        - key: CriticalAddonsOnly
+          operator: "Exists"
       volumes:
-      - name: temp-volume
-        hostPath:
-         # directory location on host
-          path: /data/termlog
-          # # this field is optional
-          # type: FileOrCreate
+        - name: temp-volume
+          hostPath:
+            # directory location on host
+            path: /data/termlog
+            # # this field is optional
+            # type: FileOrCreate
