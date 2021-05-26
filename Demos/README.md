@@ -11,24 +11,34 @@ In the example below, each step waits for the user to press the **Enter** before
 Example ***demo-basic-deployments.ps1*** script:
 
 ```powershell
-# Change to the demo folder
-cd BasicDeployments
+Set-Location BasicDeployments
+. ".\CISendMessage.ps1"
 
 read-host "Navigate to the Deployments page"
+SendMessageToCI "The following demo illustrates the basic Kubernetes deployments." "Basic Deployments:" "Info"
 
-read-host "Next Step - Creates initial deployment"
-kubectl apply -k ./base
+read-host "Next Step - Creates initial deployments"
+SendMessageToCI "kubectl apply -f workload-1-dep-lime.yaml --record" "Kubectl command:" "Command"
+kubectl apply -f workload-1-dep-lime.yaml --record
+SendMessageToCI "kubectl apply -f workload-2-dep --record" "Kubectl command:" "Command"
+kubectl apply -f workload-2-dep.yaml --record
 
-read-host "Next Step - Updates the deployment to trigger a new replica set"
-kubectl apply -k ./step1
+...
 
-read-host "Open the Deployment Info Panel by clicking the Info (i) icon to the right of the deployment name."
+read-host "Next Step - Undoes rollout to bring previous replica set back"
+SendMessageToCI "kubectl rollout undo deploy workload-1-dep" "Kubectl command:" "Command"
+kubectl rollout undo deploy workload-1-dep
+
+read-host "Next Step - Undoes rollout back to Rev 1"
+SendMessageToCI "kubectl rollout undo deploy workload-1-dep --to-revision=1" "Kubectl command:" "Command"
+kubectl rollout undo deploy workload-1-dep --to-revision=1
 
 ...
 
 read-host "Next Step - Cleans up"
-kubectl delete -k ./base
-cd ..
+SendMessageToCI "kubectl delete deploy workload-1-dep workload-2-dep" "Kubectl command:" "Command"
+kubectl delete deploy workload-1-dep workload-2-dep
+Set-Location ..
 ```
 
 The other way to run the demos is load the scripts into **VS Code**, select each line to run and press **F8** to execute it.
