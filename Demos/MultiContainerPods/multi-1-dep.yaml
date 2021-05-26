@@ -41,7 +41,7 @@ spec:
         command:
           - "bin/bash"
           - "-c"
-          - "for i in {1..999} ; do echo $i ; sleep 1s; done"
+          - "for i in {1..99} ; do echo $i ; sleep 1s; done"
       - name: someother
         image: centos:7
         command:

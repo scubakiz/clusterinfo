@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multi-0-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: multi-0
+  template:
+    metadata:
+      labels:
+        app: multi-0
+        color: aqua
+    spec:
+      containers:
+      - name: nginx
+        image: nginx    
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      - name: counter
+        image: centos:7
+        command:
+          - "bin/bash"
+          - "-c"
+          - "for i in {1..999} ; do echo $i ; sleep 1; done"  
+      nodeSelector:
+        kubernetes.io/os: linux         
+

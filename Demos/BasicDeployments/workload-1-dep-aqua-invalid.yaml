@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload-1-dep
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: workload-1
+  template:
+    metadata:
+      labels:
+        app: workload-1
+        color: aqua
+    spec:
+      containers:
+        - name: workload
+          image: nginx:1.12345
+          ports:
+            - containerPort: 80
+      nodeSelector:
+        kubernetes.io/os: linux

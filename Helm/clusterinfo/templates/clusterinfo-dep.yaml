@@ -23,14 +23,15 @@ spec:
           env:
             - name: SHOW_POD_CONTAINERS
               value: "true"
+            - name: SHOW_LOG_TIMESTAMPS
+              value: "true"              
+            - name: SHOW_MESSAGES
+              value: "true"
             - name: Logging__LogLevel__Default
               value: "{{ .Values.logging }}"
           ports:
             - containerPort: 80
           imagePullPolicy: Always
-          # volumeMounts:
-          # - mountPath: /tmp/term-log
-          #   name: temp-volume
           terminationMessagePath: /data/termlog
           terminationMessagePolicy: FallbackToLogsOnError
           livenessProbe:
@@ -47,10 +48,3 @@ spec:
           effect: "NoExecute"
         - key: CriticalAddonsOnly
           operator: "Exists"
-      volumes:
-        - name: temp-volume
-          hostPath:
-            # directory location on host
-            path: /data/termlog
-            # # this field is optional
-            # type: FileOrCreate
