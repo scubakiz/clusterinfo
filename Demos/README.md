@@ -10,7 +10,7 @@ In the example below, each step waits for the user to press the **Enter** before
 
 Example ***demo-basic-deployments.ps1*** script:
 
-```powershell
+```PowerShell
 Set-Location BasicDeployments
 . ".\CISendMessage.ps1"
 
