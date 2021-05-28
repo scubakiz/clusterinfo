@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clusterinfo
+  namespace: clusterinfo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clusterinfo
+  template:
+    metadata:
+      name: clusterinfo
+      labels:
+        app: clusterinfo
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      serviceAccountName: clusterinfo-sa
+      containers:
+        - name: clusterinfo
+          image: scubakiz/clusterinfo:{{ .Values.image.tag }}
+          env:
+            - name: SHOW_POD_CONTAINERS
+              value: "true"
+            - name: SHOW_LOG_TIMESTAMPS
+              value: "false"
+            - name: SHOW_MESSAGES
+              value: "true"
+            - name: Logging__LogLevel__Default
+              value: "{{ .Values.logging }}"
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+          terminationMessagePath: /data/termlog
+          terminationMessagePolicy: FallbackToLogsOnError
+          livenessProbe:
+            httpGet:
+              path: /Settings
+              port: 80
+            initialDelaySeconds: 60
+            periodSeconds: 20
+            timeoutSeconds: 10
+      tolerations:
+        - operator: "Exists"
+          effect: "NoSchedule"
+        - operator: "Exists"
+          effect: "NoExecute"
+        - key: CriticalAddonsOnly
+          operator: "Exists"
