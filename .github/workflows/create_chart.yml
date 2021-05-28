@@ -27,7 +27,7 @@ jobs:
       - name: Publish Helm chart
         uses: stefanprodan/helm-gh-pages@master
         with:
-          token: ${{ secrets.BOT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           charts_dir: charts
           charts_url: https://scubakiz.github.io/clusterinfo/
           owner: scubakiz
