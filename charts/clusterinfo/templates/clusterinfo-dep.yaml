@@ -27,6 +27,8 @@ spec:
               value: "false"
             - name: SHOW_MESSAGES
               value: "true"
+            - name: SOME_VALUE
+              value: "true"
             - name: Logging__LogLevel__Default
               value: "{{ .Values.logging }}"
           ports:
