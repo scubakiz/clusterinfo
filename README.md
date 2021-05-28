@@ -20,7 +20,7 @@ Install the Helm chart:
 helm install clusterinfo scubakiz/clusterinfo
 ```
 
-Wait about 60 seconds for the app to start.
+Wait about a minute for the app to start.
 
 Forward the service and the app from your local machine at http://localhost:5252:
 
