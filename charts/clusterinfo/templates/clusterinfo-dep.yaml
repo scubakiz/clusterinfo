@@ -24,7 +24,7 @@ spec:
             - name: SHOW_POD_CONTAINERS
               value: "true"
             - name: SHOW_LOG_TIMESTAMPS
-              value: "true"
+              value: "false"
             - name: SHOW_MESSAGES
               value: "true"
             - name: Logging__LogLevel__Default
