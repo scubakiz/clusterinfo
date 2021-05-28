@@ -32,4 +32,4 @@ jobs:
           charts_url: https://scubakiz.github.io/clusterinfo/
           owner: scubakiz
           repository: clusterinfo
-          branch: gh-pages         
+          branch: main         
