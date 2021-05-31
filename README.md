@@ -8,19 +8,14 @@ In-cluster Kubernetes UI designed for teaching Kubernetes concepts.
 
 # Installation:
 
-Add the Helm repo:
+Add the Helm repo and install the Helm chart:
 
 ```shell
 helm repo add scubakiz https://scubakiz.github.io/clusterinfo/
-```
-
-Install the Helm chart:
-
-```shell
 helm install clusterinfo scubakiz/clusterinfo
 ```
 
-Wait about a minute for the app to start.
+Wait about a minute or so for the app to start.
 
 Forward the service and the app from your local machine at http://localhost:5252:
 
@@ -44,4 +39,4 @@ helm repo remove scubakiz
 
 #### Technologies Used
 
-This application is written in C# using .Net Core 3.1 with Blazor.
+This application is written in C# using .NET 5.0 with Blazor.
