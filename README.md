@@ -12,6 +12,7 @@ Add the Helm repo and install the Helm chart:
 
 ```shell
 helm repo add scubakiz https://scubakiz.github.io/clusterinfo/
+helm repo update
 helm install clusterinfo scubakiz/clusterinfo
 ```
 
