@@ -41,7 +41,7 @@ rules:
     resources: ["pods/exec", "pods/log"]
     verbs: ["get", "list", "watch", "create"]
   - apiGroups: ["networking.k8s.io"]
-    resources: ["ingress"]
+    resources: ["ingresses"]
     verbs: ["get", "list", "watch"]
   - apiGroups: ["storage.k8s.io"]
     resources: ["storageclasses"]

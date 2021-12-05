@@ -43,6 +43,13 @@ spec:
             initialDelaySeconds: 60
             periodSeconds: 20
             timeoutSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 1000M
+            limits:
+              cpu: 150m
+              memory: 2500M
       tolerations:
         - operator: "Exists"
           effect: "NoSchedule"
