@@ -45,11 +45,11 @@ spec:
             timeoutSeconds: 10
           resources:
             requests:
-              cpu: 50m
+              cpu: 250m
               memory: 1000M
             limits:
-              cpu: 150m
-              memory: 2500M
+              cpu: 500m
+              memory: 3000M
       tolerations:
         - operator: "Exists"
           effect: "NoSchedule"
