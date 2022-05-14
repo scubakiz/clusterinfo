@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: test-ing
+  namespace: {{ .Values.namespace }}
+spec:
+  tls:
+    - hosts:
+      {{- range .Values.hosts }}
+      - {{ . | quote }}
+      {{- end }}  
+      secretName: test-crt-secret-tls
+  rules:
+    - host: example.com
+      http:        
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: test-svc
+                port: 
+                  number: 8100

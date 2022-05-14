@@ -1,3 +1,4 @@
 image:
-  tag: 0.9.1
-logging: Information  
+  tag: 1.0.0
+logging: Information
+host: clusterinfo.k8sws.com

@@ -23,12 +23,14 @@ spec:
           env:
             - name: SHOW_POD_CONTAINERS
               value: "true"
+            - name: SHOW_POD_ID_ADDRESS
+              value: "true"  
+            - name: SHOW_POD_CONDITIONS
+              value: "true"                
             - name: SHOW_LOG_TIMESTAMPS
               value: "false"
             - name: SHOW_MESSAGES
               value: "true"
-            - name: SOME_VALUE
-              value: "123"
             - name: Logging__LogLevel__Default
               value: "{{ .Values.logging }}"
           ports:
@@ -46,7 +48,7 @@ spec:
           resources:
             requests:
               cpu: 250m
-              memory: 1000M
+              memory: 1500M
             limits:
               cpu: 500m
               memory: 3000M

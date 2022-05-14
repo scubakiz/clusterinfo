@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: clusterinfo-letsencrypt-prod
+  namespace: clusterinfo
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: scubakiz@outlook.com
+    privateKeySecretRef: 
+      name: letsencrypt-clusterinfo-issuer-key
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
