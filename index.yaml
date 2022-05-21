@@ -3,11 +3,11 @@ entries:
   clusterinfo:
   - apiVersion: v2
     appVersion: 1.0.1
-    created: "2022-05-21T01:13:53.8423484-06:00"
+    created: "2022-05-21T07:15:12.799803976Z"
     description: A Helm chart for Cluster Info
-    digest: dffefeb267a2669621776bc9851941847d78a730d86d83b8723a0da07e6637a6
+    digest: 565d4d766486b57b294d8b60f241b30c94cb667d0d5d470e97991450abfeed42
     name: clusterinfo
     urls:
     - https://scubakiz.github.io/clusterinfo/clusterinfo-1.0.1.tgz
     version: 1.0.1
-generated: "2022-05-21T01:13:53.8395408-06:00"
+generated: "2022-05-21T07:15:12.799277269Z"
