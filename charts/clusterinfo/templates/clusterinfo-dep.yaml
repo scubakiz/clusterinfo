@@ -34,14 +34,14 @@ spec:
             - name: Logging__LogLevel__Default
               value: "{{ .Values.logging }}"
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           imagePullPolicy: Always
           terminationMessagePath: /data/termlog
           terminationMessagePolicy: FallbackToLogsOnError
           livenessProbe:
             httpGet:
               path: /Settings
-              port: 80
+              port: 8080
             initialDelaySeconds: 60
             periodSeconds: 20
             timeoutSeconds: 10
