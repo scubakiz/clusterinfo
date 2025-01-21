@@ -8,4 +8,4 @@ spec:
     app: clusterinfo
   ports:
     - port: 5252
-      targetPort: 80
+      targetPort: 8080
