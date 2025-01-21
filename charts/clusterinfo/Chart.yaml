@@ -1,5 +1,5 @@
 apiVersion: v2
 appVersion: "1.0.8"
-description: A Helm chart for Cluster Info
+description: A Helm chart for Cluster Info 1.0.8
 name: clusterinfo
 version: 1.0.8
